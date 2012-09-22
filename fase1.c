@@ -9,7 +9,7 @@ void main (){
   step = 1.0/(double) num_steps;
   int iam, np, sum_j = 0;
 
-  #pragma omp parallel for reduction(+:sum)
+  #pragma omp parallel for reduction(+:sum) private(x)
   for (i=0;i < num_steps; i++){
     x = (i+0.5)*step;
     sum += 4.0/(1.0+x*x);
@@ -17,20 +17,4 @@ void main (){
 
   pi = step * sum;
   printf("Pi = %g\n", pi);
-
-  /*#pragma omp parallel for reduction(+:sum_j)
-  for (j=0;j < num_steps; j++){
-    sum_j += j;
-  }
-
-  printf("S = %d\n", sum_j);
-
-  #pragma omp parallel default(shared) private(iam, np)
-  {
-    #if defined (_OPENMP)
-      np = omp_get_num_threads();
-      iam = omp_get_thread_num();
-    #endif
-    printf("Hello from thread %d out of %d\n", iam, np);
-  }*/
 }
