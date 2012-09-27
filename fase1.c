@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <stdio.h>
 
 static long num_steps = 1000000;
