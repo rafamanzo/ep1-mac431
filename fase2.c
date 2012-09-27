@@ -3,14 +3,12 @@
 double step;
 
 void main (int argc, char *argv[]){
-  double step, pi, x, sum, partial_sum;
+  double x, sum, partial_sum;
   int num_threads, steps_per_thread, thread_num;
   long num_steps, beginning, end, i;
 
   num_threads = omp_get_num_procs()*omp_get_num_procs();
   omp_set_num_threads(num_threads);
-
-  //partial_sum = malloc(num_threads*sizeof(double));
 
   num_steps = atoi(argv[1]);
   steps_per_thread = num_steps/num_threads;
