@@ -1,4 +1,4 @@
-all: fase0 fase1 fase2
+all: fase0 fase1 fase2 fase3
 
 fase0: fase0.c
 	gcc fase0.c -o fase0
